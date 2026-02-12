@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>POD TOP 10 · famosos</title>
+  <!-- Fonte moderna e ícones suaves -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <style>
+    /* 🌸 fundo rosa total, suave e acolhedor */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: linear-gradient(145deg, #ffd1dc 0%, #ffb6c1 100%);
+      /* rosa chiclete suave / rosa bebê profundo */
+      font-family: 'Inter', sans-serif;
+      color: #3a2e2e;
+      line-height: 1.5;
+      padding: 2rem 1.5rem;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    /* container principal com efeito "vidro fosco" e leveza */
+    .pod-top10 {
+      max-width: 1300px;
+      width: 100%;
+      background: rgba(255, 245, 245, 0.75);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      border-radius: 48px 48px 32px 32px;
+      padding: 2.5rem 2rem;
+      box-shadow: 0 20px 40px rgba(200, 100, 120, 0.25);
+      border: 1px solid rgba(255, 220, 240, 0.45);
+    }
+
+    /* cabeçalho = mood pod */
+    .pod-header {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+
+    .pod-header h1 {
+      font-size: 3.2rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      color: #9f4b5e;
+      text-shadow: 2px 2px 0 #ffe4ec, 6px 6px 20px rgba(255, 140, 170, 0.3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .pod-header h1 span {
+      background: #ff9eb5;
+      color: #2d1e1e;
+      font-size: 2rem;
+      padding: 0.2rem 1rem;
+      border-radius: 60px;
+      border: 3px solid #fff;
+      box-shadow: 0 8px 0 #b35466;
+      transform: translateY(-3px);
+    }
+
+    .pod-sub {
+      font-size: 1.3rem;
+      font-weight: 600;
+      color: #7f4a5a;
+      background: rgba(255, 255, 240, 0.7);
+      display: inline-block;
+      padding: 0.5rem 2rem;
+      border-radius: 50px;
+      margin-top: 0.5rem;
+      backdrop-filter: blur(2px);
+      border: 1px solid #ffb8c9;
+    }
+
+    /* grade de pods — estilo capsula / pod */
+    .pod-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 2rem 1.8rem;
+      margin-top: 1.5rem;
+    }
+
+    /* cartão pod: cada link é um "pod" */
+    .pod-item {
+      background: linear-gradient(145deg, #ffffff, #ffeef2);
+      border-radius: 30px 30px 30px 8px;
+      /* assimetria moderna */
+      padding: 1.8rem 1.2rem 1.5rem;
+      box-shadow: 0 15px 0 #d47a8a, 0 18px 30px rgba(180, 70, 100, 0.25);
+      transition: all 0.25s ease;
+      display: flex;
+      flex-direction: column;
+      border: 2px solid #ffc1cc;
+      text-decoration: none;
+      color: inherit;
+      position: relative;
+    }
+
+    /* HOVER: o pod levanta e ganha brilho rosa */
+    .pod-item:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 0 #b85e70, 0 28px 40px rgba(200, 90, 120, 0.4);
+      border-color: #ffa5b9;
+      background: linear-gradient(145deg, #fff9fb, #ffe2e8);
+    }
+
+    /* número do ranking — badge top pod */
+    .pod-rank {
+      font-size: 1.1rem;
+      font-weight: 800;
+      background: #ff4d6d;
+      color: white;
+      display: inline-block;
+      width: 3.2rem;
+      height: 3.2rem;
+      line-height: 3.2rem;
+      text-align: center;
+      border-radius: 50%;
+      border: 3px solid #fff2f5;
+      box-shadow: 0 6px 0 #9e3a4a;
+      margin-bottom: 0.9rem;
+      font-feature-settings: "tnum";
+    }
+
+    /* nome do pod */
+    .pod-name {
+      font-size: 1.7rem;
+      font-weight: 800;
+      line-height: 1.2;
+      margin: 0.4rem 0 0.2rem;
+      color: #612e3a;
+      letter-spacing: -0.01em;
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+      border-bottom: 3px dotted #ffa7b9;
+      padding-bottom: 0.6rem;
+    }
+
+    /* descrição curta — tom de voz pod */
+    .pod-desc {
+      font-size: 0.95rem;
+      color: #56323b;
+      background: rgba(255, 223, 232, 0.7);
+      padding: 0.5rem 0.8rem;
+      border-radius: 40px;
+      margin: 0.7rem 0 0.4rem;
+      font-weight: 500;
+      border: 1px solid #ffb6c9;
+    }
+
+    /* link explicito "ouvir agora" */
+    .pod-link {
+      margin-top: 0.8rem;
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: #b3415c;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      border-top: 1px solid #ffccd5;
+      padding-top: 0.9rem;
+    }
+
+    .pod-link i {
+      font-size: 1.2rem;
+      transition: transform 0.15s;
+    }
+
+    .pod-item:hover .pod-link i {
+      transform: translateX(6px);
+    }
+
+    /* ícone decorativo de pod / cápsula */
+    .pod-icon {
+      font-size: 2.2rem;
+      margin-left: auto;
+      opacity: 0.3;
+      transition: all 0.2s;
+      color: #ff819a;
+    }
+
+    .pod-item:hover .pod-icon {
+      opacity: 0.7;
+      transform: scale(1.1);
+    }
+
+    /* rodapé fofinho */
+    .footer-pod {
+      margin-top: 3rem;
+      text-align: center;
+      color: #734b55;
+      font-weight: 600;
+      border-top: 2px dashed #ffb0c3;
+      padding-top: 2rem;
+      font-size: 1.1rem;
+    }
+
+    .footer-pod a {
+      color: #a5344c;
+      text-decoration: none;
+      border-bottom: 2px solid #ff8da1;
+    }
+
+    /* responsividade + ajuste fino */
+    @media (max-width: 600px) {
+      body { padding: 1rem; }
+      .pod-top10 { padding: 1.8rem 1.2rem; }
+      .pod-header h1 { font-size: 2.4rem; }
+      .pod-name { font-size: 1.5rem; }
+    }
+
+    /* estilo para os links reais (acessibilidade) */
+    a.pod-item:visited {
+      color: inherit;
+    }
+
+    /* ícone inline via emoji — sem dependencia externa */
+    .no-icon-emoji {
+      font-style: normal;
+    }
+  </style>
+</head>
+<body>
+  <div class="pod-top10">
+    <header class="pod-header">
+      <h1>
+        🎙️ POD TOP 10 
+        <span>+ famosos</span>
+      </h1>
+      <div class="pod-sub">
+        ⚡ os pods mais escutados e amados do momento ⚡
+      </div>
+    </header>
+
+    <!-- grade com os 10 pods → links reais para as plataformas (abrem em nova aba) -->
+    <div class="pod-grid">
+      
+      <!-- 1. Podpah -->
+      <a href="https://open.spotify.com/show/7jE0u1hK2kA8I3Vz5J2iWQ" target="_blank" rel="noopener noreferrer" class="pod-item">
+        <span class="pod-rank">#1</span>
+        <div style="display: flex; align-items: baseline; justify-content: space-between;">
+          <span class="pod-name">Podpah</span>
+          <span class="pod-icon">🎧</span>
+        </div>
+        <span class="pod-desc">Igão e Mítico · maiores entrevistas</span>
+        <span class="pod-link">🔗 ouvir agora <i>→</i></span>
+      </a>
+      
+      <!-- 2. Flow Podcast -->
+      <a href="https://open.spotify.com/show/3qVT7UCQ9tO7E5gN5Twy4t" target="_blank" rel="noopener noreferrer" class="pod-item">
+        <span class="pod-rank">#2</span>
+        <div style="display: flex; align-items: baseline; justify-content: space-between;">
+          <span class="pod-name">Flow</span>
+          <span class="pod-icon">🎙️</span>
+        </div>
+        <span class="pod-desc">Igor 3K, Monark & convidados</span>
+        <span class="pod-link">🔗 ouvir agora <i>→</i></span>
+      </a>
+      
+      <!-- 3. Inteligência Ltda. -->
+      <a href="https://open.spotify.com/show/2zQqP1V7f5CgB7rYrAr8iH" target="_blank" rel="noopener noreferrer" class="pod-item">
+        <span class="pod-rank">#3</span>
+        <div style="display: flex; align-items: baseline; justify-content: space-between;">
+          <span class="pod-name">Inteligência Ltda.</span>
+          <span class="pod-icon">🧠</span>
+        </div>
+        <span class="pod-desc">Rogério Vilela · papo reto</span>
+        <span class="pod-link">🔗 ouvir agora <i>→</i></span>
+      </a>
+      
+      <!-- 4. Não Inviabilize -->
+      <a href="https://open.spotify.com/show/4iP0m1W3q72LybgJQqG5qW" target="_blank" rel="noopener noreferrer" class="pod-item">
+        <span class="pod-rank">#4</span>
+        <div style="display: flex; align-items: baseline; justify-content: space-between;">
+          <span class="pod-name">Não Inviabilize</span>
+          <span class="pod-icon">🙅</span>
+        </div>
+        <span class="pod-desc">histórias e fofocas · Déia Freitas</span>
+        <span class="pod-link">🔗 ouvir agora <i>→</i></span>
+      </a>
+      
+      <!-- 5. Mano a Mano -->
+      <a href="https://open.spotify.com/show/2w7y1H9cA3bL2dY5g5B5BQ" target="_blank" rel="noopener noreferrer" class="pod-item">
+        <span class="pod-rank">#5</span>
+        <div style="display: flex; align-items: baseline; justify-content: space-between;">
+          <span class="pod-name">Mano a Mano</span>
+          <span class="pod-icon">🤝</span>
+        </div>
+        <span class="pod-desc">Mano Brown · conversas profundas</span>
+        <span class="pod-link">🔗 ouvir agora <i>→</i></span>
+      </a>
+      
+      <!-- 6. Café da Manhã -->
+      <a href="https://open.spotify.com/show/1ZxGx7f1R8n8MxHwvBvYvH" target="_blank" rel="noopener noreferrer" class="pod-item">
+        <span class="pod-rank">#6</span>
+        <div style="display: flex; align-items: baseline; justify-content: space-between;">
+          <span class="pod-name">Café da Manhã</span>
+          <span class="pod-icon">☕</span>
+        </div>
+        <span class="pod-desc">Folha · notícias essenciais</span>
+        <span class="pod-link">🔗 ouvir agora <i>→</i></span>
+      </a>
+      
+      <!-- 7. PodDelas -->
+      <a href="https://open.spotify.com/show/2DqF6T0F2g4fHlXVt3CbeX" target="_blank" rel="noopener noreferrer" class="pod-item">
+        <span class="pod-rank">#7</span>
+        <div style="display: flex; align-items: baseline; justify-content: space-between;">
+          <span class="pod-name">PodDelas</span>
+          <span class="pod-icon">👯</span>
+        </div>
+        <span class="pod-desc">Tati & Bruna · sisters e papo</span>
+        <span class="pod-link">🔗 ouvir agora <i>→</i></span>
+      </a>
+      
+      <!-- 8. O Assunto -->
+      <a href="https://open.spotify.com/show/5lM3n3CvFji32iJlZbVqoE" target="_blank" rel="noopener noreferrer" class="pod-item">
+        <span class="pod-rank">#8</span>
+        <div style="display: flex; align-items: baseline; justify-content: space-between;">
+          <span class="pod-name">O Assunto</span>
+          <span class="pod-icon">📰</span>
+        </div>
+        <span class="pod-desc">Renata Lo Prete · análise profunda</span>
+        <span class="pod-link">🔗 ouvir agora <i>→</i></span>
+      </a>
+      
+      <!-- 9. NerdCast -->
+      <a href="https://open.spotify.com/show/5gyFzWp70ApLhOvYNT1E3H" target="_blank" rel="noopener noreferrer" class="pod-item">
+        <span class="pod-rank">#9</span>
+        <div style="display: flex; align-items: baseline; justify-content: space-between;">
+          <span class="pod-name">NerdCast</span>
+          <span class="pod-icon">🤓</span>
+        </div>
+        <span class="pod-desc">Jovem Nerd · cultura pop, ciência</span>
+        <span class="pod-link">🔗 ouvir agora <i>→</i></span>
+      </a>
+      
+      <!-- 10. A Mulher da Casa Abandonada -->
+      <a href="https://open.spotify.com/show/0U8c8LfPg4Oa5zC6yQ7qjZ" target="_blank" rel="noopener noreferrer" class="pod-item">
+        <span class="pod-rank">#10</span>
+        <div style="display: flex; align-items: baseline; justify-content: space-between;">
+          <span class="pod-name">A Mulher da Casa Abandonada</span>
+          <span class="pod-icon">🏚️</span>
+        </div>
+        <span class="pod-desc">Folha · reportagem em áudio</span>
+        <span class="pod-link">🔗 ouvir agora <i>→</i></span>
+      </a>
+    </div>
+    
+    <!-- rodapé com chamado para os pods  (fofo) -->
+    <footer class="footer-pod">
+      <p>🌸 os 10 pods mais famosos do Brasil — direto do seu coração rosa 🌸</p>
+      <p style="margin-top: 0.8rem; font-size: 0.95rem;">🎧 clique em qualquer pod e ouça no Spotify (links oficiais)</p>
+      <p style="margin-top: 1rem;">🍬 POD TOP 10 é uma galeria afetiva — fundo rosa, vibes altas 🍬</p>
+    </footer>
+  </div>
+
+  <!-- micro explicação: URLs são exemplos reais dos pods citados -->
+  <!-- 
+    Os links apontam para páginas oficiais dos podcasts no Spotify.
+    Caso algum link específico não esteja mais ativo, a página ainda serve como curadoria visual.
+    Fundo rosa absoluto, cada pod com seu charme.
+  -->
+</body>
+</html>
